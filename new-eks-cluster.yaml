@@ -1,0 +1,37 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-cluster
+  region: ap-northeast-2
+
+vpc:
+  id: 'vpc-id'
+  cidr: '10.0.0.0/24'
+  subnets:
+    private:
+      dev-ecom-sub-pri01:
+        id: 'subnet01-id'
+        cidr: '10.0.0.128/26'
+      dev-ecom-sub-pri02:
+        id: 'subnet02-id'
+        cidr: '10.0.0.192/26'
+
+fargateProfiles:
+  - name: fp-default
+    selectors:
+      - namespace: default
+      - namespace: kube-system
+  - name: fp-mgmt
+    selectors:
+      - namespace: mgmt
+        labels:
+          type: mgmt
+  - name: fp-backend
+    selectors:
+      - namespace: backend
+        labels:
+          type: backend
+
+cloudWatch:
+  clusterLogging: {}
