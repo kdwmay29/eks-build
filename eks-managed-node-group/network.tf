@@ -18,9 +18,6 @@ module "vpc" {
   enable_nat_gateway = true
   one_nat_gateway_per_az = true
 
-  public_subnet_names = ["${local.name}-pub01", "${local.name}-pub02"]
-  private_subnet_names = ["${local.name}-pri01", "${local.name}-pri02"]
-
   public_subnet_tags = {
     "kubernetes.io/role/elb" = 1
   }
@@ -43,7 +40,7 @@ resource "aws_security_group" "ecom-sg-ecrendpoint" {
 resource "aws_security_group_rule" "allow-https-endpoint" {
   from_port         = 443
   protocol          = "tcp"
-  security_group_id = aws_security_group.ecom-sg-ssmendpoint.id
+  security_group_id = aws_security_group.ecom-sg-ecrendpoint.id
   to_port           = 443
   type              = "ingress"
   description       = "https"
@@ -53,7 +50,7 @@ resource "aws_security_group_rule" "allow-https-endpoint" {
 resource "aws_security_group_rule" "allow-https-egress" {
   from_port                = 443
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.ecom-sg-endpoint.id
+  security_group_id        = aws_security_group.ecom-sg-ecrendpoint.id
   to_port                  = 443
   type                     = "egress"
   description              = "https egress"
@@ -62,12 +59,12 @@ resource "aws_security_group_rule" "allow-https-egress" {
 
 
 resource "aws_vpc_endpoint" "ecom-endpoint-ecr" {
-  vpc_id            = aws_vpc.vpc.id
+  vpc_id            = module.vpc.vpc_id
   service_name      = "com.amazonaws.ap-northeast-2.ssm"
   vpc_endpoint_type = "Interface"
 
   security_group_ids = [
-    aws_security_group.ecom-sg-ssmendpoint.id,
+    aws_security_group.ecom-sg-ecrendpoint.id,
   ]
 
   private_dns_enabled = true
