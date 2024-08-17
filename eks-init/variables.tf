@@ -36,6 +36,14 @@ variable "aws_region" {
   default = "ap-northeast-2"
 }
 
-variable "cluster_version" {
+variable "cluster-name" {
+  default = "cluster"
+}
+
+variable "cluster-version" {
   default = "1.30"
+}
+
+locals {
+    region = "ap-northeast-2"
 }
