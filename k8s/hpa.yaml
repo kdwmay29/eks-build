@@ -2,13 +2,13 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: php-apache
-  namespace: staging
+  name: service-hpa
+  namespace: service
 spec:
   minReplicas: 1
   maxReplicas: 3
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: php-apache
+    name: user
   targetCPUUtilizationPercentage: 50
