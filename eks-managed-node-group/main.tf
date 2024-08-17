@@ -34,7 +34,7 @@ provider "kubectl" {
 data "aws_availability_zones" "available" {}
 
 locals {
-  name   = "olive"
+  name   = "main"
   vpc_cidr = "10.0.0.0/16"
   azs = [
     data.aws_availability_zones.available.names[0], # 첫 번째 가용 영역
@@ -64,6 +64,9 @@ module "vpc" {
 
   enable_nat_gateway = true
   one_nat_gateway_per_az = true
+
+  public_subnet_names = ["${local.name}-pub01", "${local.name}-pub02"]
+  private_subnet_names = ["${local.name}-pri01", "${local.name}-pri02"]
 
   public_subnet_tags = {
     "kubernetes.io/role/elb" = 1
