@@ -88,7 +88,7 @@ locals {
 # EKS 클러스터 인증 데이터 소스 추가
 ######################################################################################################################
 
-data "aws_eks_cluster_auth" "wave-eks" {
+data "aws_eks_cluster_auth" "eks" {
   name = var.cluster-name
 }
 
