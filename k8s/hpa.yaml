@@ -2,11 +2,11 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: service-hpa
+  name: service-hpa-user
   namespace: service
 spec:
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
@@ -16,11 +16,11 @@ spec:
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: service-hpa
+  name: service-hpa-product
   namespace: service
 spec:
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 4
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment

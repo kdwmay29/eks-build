@@ -59,4 +59,6 @@ resource "helm_release" "eks_common_alb" {
       value = set.value
     }
   }
+
+  depends_on = [ module.eks ]
 }
