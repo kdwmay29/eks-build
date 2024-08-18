@@ -21,6 +21,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: service
+                name: service-user
+                port:
+                  number: 80
+          - path: /product
+            pathType: Prefix
+            backend:
+              service:
+                name: service-product
                 port:
                   number: 80

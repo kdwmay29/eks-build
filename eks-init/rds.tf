@@ -49,7 +49,7 @@
 #   vpc_security_group_ids  = [aws_security_group.rds_sg.id] # RDS 보안 그룹 설정
 #   storage_encrypted       = true                       # 스토리지 암호화 활성화
 # # kms_key_id              = "arn:aws:kms:ap-northeast-3:654654433513:key/f8dc0a45-f1fb-4d89-b8d7-ce27230a77ec" # KMS 키 ARN (실제 ARN으로 변경)
-
+#   skip_final_snapshot = true
 #   tags = {
 #     Name = "dev-ecom-aurora-cluster"
 #   }

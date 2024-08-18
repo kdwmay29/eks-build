@@ -7,7 +7,7 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-deploy
+  name: service-user
   namespace: service
 spec:
   selector:
@@ -23,9 +23,40 @@ spec:
     spec:
       containers:
         - name: user
+          # image: { imageURI }
+          image: nginx
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-product
+  namespace: service
+spec:
+  selector:
+    matchLabels:
+      for: product
+  # remove replica if using gitops
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        type: service
+        for: product
+    spec:
+      containers:
+        - name: product
           image:
-            { imageURI }
-            # image: nginx
+          # image: { imageURI }
+          image: nginx
           ports:
             - containerPort: 80
           resources:
