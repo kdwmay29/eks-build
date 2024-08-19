@@ -5,8 +5,8 @@ metadata:
   name: service-hpa-user
   namespace: service
 spec:
-  minReplicas: 1
-  maxReplicas: 2
+  minReplicas: 2
+  maxReplicas: 4
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
@@ -19,7 +19,7 @@ metadata:
   name: service-hpa-product
   namespace: service
 spec:
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 4
   scaleTargetRef:
     apiVersion: apps/v1

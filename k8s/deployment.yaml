@@ -12,9 +12,10 @@ metadata:
 spec:
   selector:
     matchLabels:
+      type: service
       for: user
   # remove replica if using gitops
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -26,7 +27,7 @@ spec:
           # image: { imageURI }
           image: nginx
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           resources:
             limits:
               cpu: 200m
@@ -38,27 +39,28 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-product
+  name: service-products
   namespace: service
 spec:
   selector:
     matchLabels:
-      for: product
+      type: service
+      for: products
   # remove replica if using gitops
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
         type: service
-        for: product
+        for: products
     spec:
       containers:
-        - name: product
+        - name: products
           image:
           # image: { imageURI }
           image: nginx
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           resources:
             limits:
               cpu: 200m

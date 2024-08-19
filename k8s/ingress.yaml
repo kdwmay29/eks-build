@@ -24,10 +24,10 @@ spec:
                 name: service-user
                 port:
                   number: 80
-          - path: /product
+          - path: /products
             pathType: Prefix
             backend:
               service:
-                name: service-product
+                name: service-products
                 port:
                   number: 80
