@@ -1,0 +1,7 @@
+datadog:
+ apiKeyExistingSecret: datadog-secret
+ appKeyExistingSecret: datadog-secret
+ site: ap1.datadoghq.com
+clusterAgent:
+ metricsProvider:
+  enabled: true
