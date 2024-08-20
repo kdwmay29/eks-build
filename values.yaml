@@ -1,0 +1,9 @@
+datadog:
+  apiKey: 8d5d4af438e881961bb2ec7dabd3f065
+  appKey: c4cb12f62fe0993b9ce30bef0b2cc5cd06e55aeb
+  criSocketPath: /run/dockershim.sock
+  env:
+  - name: DD_AUTOCONFIG_INCLUDE_FEATURES
+    value: "containerd"
+
+    
