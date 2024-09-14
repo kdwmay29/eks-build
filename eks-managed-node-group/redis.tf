@@ -39,7 +39,7 @@ resource "aws_elasticache_replication_group" "redis" {
   description                   = "Redis replication group for e-commerce application"
   engine                        = "redis"
   engine_version                = "7.1"
-  node_type                     = "cache.t2.micro"
+  node_type                     = "cache.r5.large"
   parameter_group_name          = "default.redis7.cluster.on"
   port                          = 6379
   subnet_group_name             = aws_elasticache_subnet_group.redis.name

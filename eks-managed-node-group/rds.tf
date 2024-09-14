@@ -59,7 +59,7 @@ resource "aws_rds_cluster" "aurora_mysql" {
 resource "aws_rds_cluster_instance" "aurora_mysql_instance" {
   identifier        = "aurora-mysql-instance-1"        # 인스턴스 식별자
   cluster_identifier = aws_rds_cluster.aurora_mysql.id  # 클러스터 ID와 연결
-  instance_class     = "db.t3.medium"                   # 인스턴스 클래스 (실제 요구에 맞게 변경)
+  instance_class     = "db.r5.large"                   # 인스턴스 클래스 (실제 요구에 맞게 변경)
   engine             = aws_rds_cluster.aurora_mysql.engine
   engine_version     = aws_rds_cluster.aurora_mysql.engine_version
   publicly_accessible = false                           # 퍼블릭 액세스 비활성화

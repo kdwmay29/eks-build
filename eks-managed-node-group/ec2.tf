@@ -64,7 +64,7 @@ resource "aws_iam_instance_profile" "ec2_cli_profile" {
 
 resource "aws_instance" "ecom-ec2-cli" {
   ami           = "ami-0c2acfcb2ac4d02a0"
-  instance_type = "t2.micro"
+  instance_type = "t3.large"
   subnet_id     = module.vpc.private_subnets[0]
 
   iam_instance_profile = aws_iam_instance_profile.ec2_cli_profile.name
