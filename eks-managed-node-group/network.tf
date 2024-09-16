@@ -71,3 +71,45 @@ resource "aws_vpc_endpoint" "ecom-endpoint-ssm" {
 
   subnet_ids =module.vpc.private_subnets
 }
+
+resource "aws_vpc_endpoint" "ecom-endpoint-ec2messages" {
+  vpc_id            = module.vpc.vpc_id
+  service_name      = "com.amazonaws.ap-northeast-2.ec2messages"
+  vpc_endpoint_type = "Interface"
+
+  security_group_ids = [
+    aws_security_group.ecom-sg-ssmendpoint.id,
+  ]
+
+  private_dns_enabled = true
+
+  subnet_ids =module.vpc.private_subnets
+}
+
+resource "aws_vpc_endpoint" "ecom-endpoint-ssmmessages" {
+  vpc_id            = module.vpc.vpc_id
+  service_name      = "com.amazonaws.ap-northeast-2.ssmmessages"
+  vpc_endpoint_type = "Interface"
+
+  security_group_ids = [
+    aws_security_group.ecom-sg-ssmendpoint.id,
+  ]
+
+  private_dns_enabled = true
+
+  subnet_ids =module.vpc.private_subnets
+}
+
+resource "aws_vpc_endpoint" "ecom-endpoint-ecr" {
+  vpc_id            = module.vpc.vpc_id
+  service_name      = "com.amazonaws.ap-northeast-2.ecr"
+  vpc_endpoint_type = "Interface"
+
+  security_group_ids = [
+    aws_security_group.ecom-sg-ssmendpoint.id,
+  ]
+
+  private_dns_enabled = true
+
+  subnet_ids =module.vpc.private_subnets
+}
