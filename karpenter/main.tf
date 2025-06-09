@@ -39,7 +39,7 @@ data "aws_ecrpublic_authorization_token" "token" {
 locals {
   name   = "karpenter"
 
-  vpc_cidr = "10.0.0.0/16"
+  vpc_cidr = "10.249.0.0/16"
   azs = [
     data.aws_availability_zones.available.names[0], # 첫 번째 가용 영역
     data.aws_availability_zones.available.names[2]  # 세 번째 가용 영역
@@ -58,7 +58,7 @@ module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
   cluster_name    = local.name
-  cluster_version = "1.30"
+  cluster_version = "1.32"
 
   # Gives Terraform identity admin access to cluster which will
   # allow deploying resources (Karpenter) into the cluster
