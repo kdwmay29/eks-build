@@ -7,15 +7,15 @@ metadata:
 
 vpc:
   id: 'vpc-id'
-  cidr: '10.0.0.0/24'
+  cidr: '10.249.0.0/24'
   subnets:
     private:
       dev-ecom-sub-pri01:
         id: 'subnet01-id'
-        cidr: '10.0.0.128/26'
+        cidr: '10.249.0.128/26'
       dev-ecom-sub-pri02:
         id: 'subnet02-id'
-        cidr: '10.0.0.192/26'
+        cidr: '10.249.0.192/26'
 
 fargateProfiles:
   - name: fp-default
