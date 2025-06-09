@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "hachwimu-terraform-state"
+  bucket = "kimdw-terraform-state"
 }
 
 # Enable versioning so you can see the full revision history of your
